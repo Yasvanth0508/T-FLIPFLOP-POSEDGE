@@ -28,47 +28,53 @@ From the above characteristic table, we can directly write the next state equati
 
 **Procedure**
 
-1. Type the program in Quartus software.
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
 
-2. Compile and run the program.
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
 
-3. Generate the RTL schematic and save the logic diagram.
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
 
-4. Create nodes for inputs and outputs to generate the timing diagram.
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
 
-5. For different input combinations generate the timing diagram.
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
 
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
 
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes. /* write all the steps invloved */
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
 Developed by: Yasvanth RD
 RegisterNumber: 24900517
 */
 
 ```
-module exp9(T,clk,Q,Qbar);
-input T,clk;
-output reg Q;
-output reg Qbar;
-initial Q=0;
-initial Qbar=1;
-always @(posedge clk)
-begin 
-Q=(T&(~Q))|((~T)&Q);
-Qbar=~Q;
-end
-endmodule
+
+ module exp9(t, clk, rst, q);
+   input t, clk, rst;
+   output reg q;
+ 
+   always @(posedge clk or posedge rst) 
+ begin
+     if (rst)
+       q <= 0; // Reset the flip-flop
+     else if (t==0)
+       q <= q; 
+      else
+         q<=~q;
+   end
+ endmodule
 ```
 **RTL LOGIC FOR FLIPFLOPS**
 
-![image](https://github.com/user-attachments/assets/c1aa43b6-2831-4894-a6a9-3ea738ec983d)
+![396340470-aeb3eaed-6fd4-48af-abca-ef89610e310e](https://github.com/user-attachments/assets/028abca9-ffa3-4ade-b215-16d26416448e)
 
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-![image](https://github.com/user-attachments/assets/d79d624f-95c2-4101-8aee-26cbb9aba5bc)
+![396340493-9935c36d-c2c5-404c-92c7-d3ec1c1479ac](https://github.com/user-attachments/assets/18f5512b-25cc-45f3-be31-37168af93439)
+
+
 
 
 **RESULTS**
