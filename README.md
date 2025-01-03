@@ -50,29 +50,31 @@ RegisterNumber: 24900517
 
 ```
 
- module exp9(t, clk, rst, q);
-   input t, clk, rst;
-   output reg q;
- 
-   always @(posedge clk or posedge rst) 
- begin
-     if (rst)
-       q <= 0; // Reset the flip-flop
-     else if (t==0)
-       q <= q; 
-      else
-         q<=~q;
-   end
- endmodule
+module t_ff_ (t, clk, rst, q);
+  input t, clk, rst;
+  output reg q;
+
+  always @(posedge clk or posedge rst) 
+begin
+    if (rst)
+      q <= 0; 
+    else if (t==0)
+      q <= q; 
+     else
+        q<=~q;
+  end
+endmodule
 ```
 **RTL LOGIC FOR FLIPFLOPS**
 
-![396340470-aeb3eaed-6fd4-48af-abca-ef89610e310e](https://github.com/user-attachments/assets/028abca9-ffa3-4ade-b215-16d26416448e)
+![395432627-6e596041-f06a-4c6d-9f48-414f3b79417b](https://github.com/user-attachments/assets/3ed84294-7b51-4c84-b856-149dc44288f3)
+
 
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-![396340493-9935c36d-c2c5-404c-92c7-d3ec1c1479ac](https://github.com/user-attachments/assets/18f5512b-25cc-45f3-be31-37168af93439)
+
+![398512596-ddc4bdb0-dbfd-4eda-9039-53a2e5e0d370](https://github.com/user-attachments/assets/2698ab2a-2b20-4a58-ab38-0e81c51b038a)
 
 
 
